@@ -22,7 +22,7 @@ module Ruboty
       def sync
         loop do
           wait
-          data.save
+          data.synchronize
         end
       end
 

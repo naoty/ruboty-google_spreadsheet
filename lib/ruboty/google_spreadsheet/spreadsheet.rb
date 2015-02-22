@@ -13,8 +13,8 @@ module Ruboty
         @worksheets[index] ||= session.spreadsheet_by_key(@key).worksheets[index]
       end
 
-      def save
-        @worksheets.compact.each(&:save)
+      def synchronize
+        @worksheets.compact.each(&:synchronize)
       end
 
       private
