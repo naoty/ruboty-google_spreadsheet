@@ -6,5 +6,5 @@ Store [Ruboty](https://github.com/r7kamura/ruboty/)'s memory in Google Spreadshe
 
 ```ruby
 # Gemfile
-gem "ruboty-google-spreadsheet"
+gem "ruboty-google-spreadsheet", require "ruboty/google_spreadsheet"
 ```
