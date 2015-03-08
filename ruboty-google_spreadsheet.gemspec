@@ -4,12 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'ruboty/google_spreadsheet/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "ruboty-google-spreadsheet"
+  spec.name          = "ruboty-google_spreadsheet"
   spec.version       = Ruboty::GoogleSpreadsheet::VERSION
   spec.authors       = ["Naoto Kaneko"]
   spec.email         = ["naoty.k@gmail.com"]
   spec.summary       = %q{Store Ruboty's memory in Google Spreadsheet.}
-  spec.homepage      = "https://github.com/naoty/ruboty-google-spreadsheet"
+  spec.homepage      = "https://github.com/naoty/ruboty-google_spreadsheet"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
