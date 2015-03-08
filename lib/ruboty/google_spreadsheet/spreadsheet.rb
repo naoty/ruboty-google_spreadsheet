@@ -3,9 +3,9 @@ require "google_drive"
 module Ruboty
   module GoogleSpreadsheet
     class Spreadsheet
-      def initialize(access_token, key)
-        @access_token = access_token
-        @key = key
+      def initialize(attrs = {})
+        @access_token = attrs[:access_token]
+        @key = attrs[:spreadsheet_key]
         @worksheets = []
       end
 
