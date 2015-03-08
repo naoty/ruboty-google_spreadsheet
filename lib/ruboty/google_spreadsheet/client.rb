@@ -26,7 +26,7 @@ module Ruboty
 
       def api_client
         @api_client ||= Google::APIClient.new(
-          application_name: "Ruboty::GoogleSpreadsheet",
+          application_name: "ruboty-google_spreadsheet",
           application_version: VERSION
         )
       end
