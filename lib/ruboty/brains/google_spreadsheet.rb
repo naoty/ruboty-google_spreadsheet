@@ -10,8 +10,10 @@ module Ruboty
       def initialize
         super
 
-        @thread = Thread.new { sync }
-        @thread.abort_on_exception = true
+        @threads = []
+        @threads << Thread.new { sync }
+        @threads << Thread.new { reauthenticate }
+        @threads.each { |thread| thread.abort_on_exception = true }
 
         @client = Ruboty::GoogleSpreadsheet::Client.new(
           client_id: ENV["GOOGLE_CLIENT_ID"],
@@ -33,17 +35,17 @@ module Ruboty
 
       def sync
         loop do
-          wait
+          sleep 5
           data.synchronize
         end
       end
 
-      def wait
-        sleep(interval)
-      end
-
-      def interval
-        (ENV["GOOGLE_SPREADSHEET_SAVE_INTERVAL"] || 5).to_i
+      def reauthenticate
+        loop do
+          sleep 1800
+          @client.authenticate!
+          @data = nil
+        end
       end
     end
   end

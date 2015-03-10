@@ -11,11 +11,13 @@ module Ruboty
         @authorization.client_secret = attrs[:client_secret]
         @authorization.scope = SCOPE
         @authorization.redirect_uri = attrs[:redirect_uri]
-        @authorization.refresh_token = attrs[:refresh_token]
+        @refresh_token = attrs[:refresh_token]
       end
 
       def authenticate!
+        @authorization.refresh_token = @refresh_token
         @authorization.fetch_access_token!
+        @refresh_token = @authorization.refresh_token
       end
 
       def access_token
