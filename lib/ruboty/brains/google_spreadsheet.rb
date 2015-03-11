@@ -12,7 +12,7 @@ module Ruboty
 
         @threads = []
         @threads << Thread.new { sync }
-        @threads << Thread.new { reauthenticate }
+        @threads << Thread.new { reautorize }
         @threads.each { |thread| thread.abort_on_exception = true }
 
         @client = Ruboty::GoogleSpreadsheet::Client.new(
@@ -21,7 +21,7 @@ module Ruboty
           redirect_uri: ENV["GOOGLE_REDIRECT_URI"],
           refresh_token: ENV["GOOGLE_REFRESH_TOKEN"]
         )
-        @client.authenticate!
+        @client.authorize!
       end
 
       def data
@@ -40,11 +40,11 @@ module Ruboty
         end
       end
 
-      def reauthenticate
+      def reauthorize
         loop do
           # access token will expire in 3600 sec.
           sleep 3599
-          @client.authenticate!
+          @client.authorize!
           @data = nil
         end
       end

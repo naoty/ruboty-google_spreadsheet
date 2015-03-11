@@ -14,7 +14,7 @@ module Ruboty
         @refresh_token = attrs[:refresh_token]
       end
 
-      def authenticate!
+      def authorize!
         @authorization.refresh_token = @refresh_token
         @authorization.fetch_access_token!
         @refresh_token = @authorization.refresh_token
