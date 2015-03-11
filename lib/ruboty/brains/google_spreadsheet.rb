@@ -42,7 +42,8 @@ module Ruboty
 
       def reauthenticate
         loop do
-          sleep 1800
+          # access token will expire in 3600 sec.
+          sleep 3599
           @client.authenticate!
           @data = nil
         end
